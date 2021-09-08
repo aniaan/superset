@@ -71,16 +71,20 @@ docker build --target lean -t ghcr.io/aniaan/superset:1.3 .
 #  --label "built_at=$(date)" \
 #  --label "target=dev" \
 #  --label "build_actor=${GITHUB_ACTOR}" \
-  .
+#  .
 
-if [ -z "${DOCKERHUB_TOKEN}" ]; then
-  # Skip if secrets aren't populated -- they're only visible for actions running in the repo (not on forks)
-  echo "Skipping Docker push"
-else
-  # Login and push
-  docker logout
-  echo "${CR_PAT}" | docker login ghcr.io -u aniaan --password-stdin
-  docker push ghcr.io/aniaan/superset:1.3
-#  docker login --username "${DOCKERHUB_USER}" --password "${DOCKERHUB_TOKEN}"
-#  docker push --all-tags "${REPO_NAME}"
-fi
+docker logout
+echo "${CR_PAT}" | docker login ghcr.io -u aniaan --password-stdin
+docker push ghcr.io/aniaan/superset:1.3
+
+#if [ -z "${DOCKERHUB_TOKEN}" ]; then
+#  # Skip if secrets aren't populated -- they're only visible for actions running in the repo (not on forks)
+#  echo "Skipping Docker push"
+#else
+#  # Login and push
+#  docker logout
+#  echo "${CR_PAT}" | docker login ghcr.io -u aniaan --password-stdin
+#  docker push ghcr.io/aniaan/superset:1.3
+##  docker login --username "${DOCKERHUB_USER}" --password "${DOCKERHUB_TOKEN}"
+##  docker push --all-tags "${REPO_NAME}"
+#fi
