@@ -58,6 +58,7 @@ RUN mkdir -p /app/superset-frontend
 RUN mkdir -p /app/superset/assets
 COPY ./docker/frontend-mem-nag.sh /
 COPY ./superset-frontend/package* /app/superset-frontend/
+RUN npm config set registry http://registry.npmjs.org/
 RUN /frontend-mem-nag.sh \
         && cd /app/superset-frontend \
         && npm ci

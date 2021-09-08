@@ -18,5 +18,6 @@ jobs:
         env:
           DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          CR_PAT: ${{ secrets.CR_PAT }}
         run: |
           .github/workflows/docker_build_push.sh
