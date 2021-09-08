@@ -58,7 +58,7 @@ docker build --target lean -t ghcr.io/aniaan/superset:1.3 .
 #  --label "built_at=$(date)" \
 #  --label "target=lean" \
 #  --label "build_actor=${GITHUB_ACTOR}" \
-  .
+#  .
 
 #
 # Build the dev image
